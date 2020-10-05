@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id=lista> solicita</button>
+    <div id="container" >
+
+    </div>
+    <script>
+        document.getElementById("lista").addEventListener('click', 
+        async function getAll(){
+            let fetchA = await fetch('http://127.0.0.1:5000/list')
+            let fetchJ = await fetchA.json();
+            const container = document.getElementById("container")
+            console.log(fetchJ)
+            fetchJ.forEach(item => {
+                let list = document.createElement('ul')
+                let reg = document.createElement('li')
+                reg.innerHTML = item.Text1  + "  holi"
+                list.appendChild(reg)
+                container.appendChild(list)
+            } )
+
+        })
+    </script>
+</body>
+</html>
